@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Dodaj post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="f" id="f">
+    <form action="#" name="form">
+      <label for="title">tytuł</label>
+      <input name="title" id="title" required>
+      <label for="body">treść</label>
+      <textarea id="body" name="body"></textarea>
+      <input type="button" value="dodaj offline" onclick="addOffline()">
+    </form>
+  </div>
+  {% endblock %}

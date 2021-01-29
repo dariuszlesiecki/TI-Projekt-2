@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Posty{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if records %}
+    {% for row in records %}
+        <h3><i><a href="{{ url_for('posts', id=row[4]) }}">{{row[0]}}</a> {{row[1]}} </i></h3>
+        <h2><b>{{row[2]}} </b></h2>
+        {{row[3]}} <br>
+    {% endfor %}
+    {% endif %}
+{% endblock %}

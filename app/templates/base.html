@@ -1,0 +1,43 @@
+<!doctype html>
+<title>{% block title %}{% endblock %}</title>
+<link rel="shortcut icon" href="#" />
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='script.js')}}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<nav>
+  <h1>Dariusz Lesiecki - Projekt 2</h1>
+  <ul>
+    {% if g.user %}
+      <li><span>Zalogowany jako: {{ g.user['username'] }}</span>
+      <li><a href="#" onclick="sendOnline();">Synchronizuj dane</a>
+      <li><a href="{{ url_for('add') }}">Dodaj post</a>
+      <li><a href="{{ url_for('posts', id=g.user['id']) }}">Moje posty</a>
+      <li><a href="{{ url_for('posts') }}">Wszystkie posty</a>
+      <li><a href="{{ url_for('auth.logout') }}">Wyloguj</a>
+    {% else %}
+      <li><a href="#" onclick="showForm();">Dodaj offline</a>
+      <li><a href="{{ url_for('posts') }}">Wszystkie posty</a>
+      <li><a href="{{ url_for('auth.register') }}">Rejestracja</a>
+      <li><a href="{{ url_for('auth.login') }}">Zaloguj się</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}
+  <div class="f" id="f">
+    <form action="#" name="form">
+      <label for="title">tytuł</label>
+      <input name="title" id="title" required>
+      <label for="body">treść</label>
+      <textarea id="body" name="body"></textarea>
+      <input type="button" value="dodaj offline" onclick="addOffline()">
+    </form>
+  </div>
+  {% endblock %}
+</section>
