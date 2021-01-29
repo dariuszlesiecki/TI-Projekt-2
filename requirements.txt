@@ -1,5 +1,2 @@
 Flask==1.1.1
-Flask-WTF==0.14.3
-WTForms==2.3.3
-Werkzeug==0.16.1
 psycopg2==2.8.4
