@@ -29,7 +29,6 @@
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-  {% block content %}
   <div class="f" id="f">
     <form action="#" name="form">
       <label for="title">tytuł</label>
@@ -39,5 +38,6 @@
       <input type="button" value="dodaj offline" onclick="addOffline()">
     </form>
   </div>
+  {% block content %}
   {% endblock %}
 </section>
