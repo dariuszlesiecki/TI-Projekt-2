@@ -17,13 +17,13 @@ def register():
         error = None
 
         if not username:
-            error = 'Username is required.'
+            error = 'Nie podano nazwy.'
         elif not password:
-            error = 'Password is required.'
+            error = 'Nie podano hasła.'
         elif execute_fetchone(
             f"SELECT id FROM users WHERE username = '{username}' "
         ) is not None:
-            error = f'User {username} is already registered.'
+            error = f'Użytkownik {username} już jest zarejestrowany.'
 
         if error is None:
             insert(
