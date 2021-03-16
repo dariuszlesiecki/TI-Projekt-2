@@ -1,0 +1,3 @@
+Project app for web application technologies course WFIiS AGH.
+
+To be continued...
